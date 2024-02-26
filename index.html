@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="fundo">
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <main>
+        <section>
+            <p id="hora">Horas</p>
+            <div id="imagem"><!-- Aqui vai a imagem --></div>
+        </section>
+    </main>
+    <script>
+        function horaAtual() {
+            var dataAtual = new Date()
+            var horaAtual = dataAtual.getHours()
+            var min = dataAtual.getMinutes()
+            return `${horaAtual}h e ${min}min`
+        }
+
+        function tema() {
+            let fundo = document.querySelector('body#fundo')
+            let imagem = document.querySelector('div#imagem')
+            let hora = horaAtual().substr(0, 2)
+
+            if (hora <= 17 && hora >= 12) {
+                fundo.style.background = 'rgb(234, 186, 98)'
+                imagem.style.backgroundImage = 'url(../ex001/imagens/tarde.jpg)'
+                imagem.style.backgroundPosition = 'bottom'
+            } else if (hora >=6 && hora <= 11){
+                fundo.style.background = 'rgb(227, 231, 100)'
+                imagem.style.backgroundImage = 'url(../ex001/imagens/manha.jpg)'
+                imagem.style.backgroundPosition = 'right bottom'
+            } else {
+                fundo.style.background = 'rgb(32, 32, 60)'
+                imagem.style.backgroundImage = 'url(../ex001/imagens/noite.jpg)'
+            } 
+                
+                
+        }
+
+        tema()
+        
+        let hora = window.document.querySelector("p#hora")
+        hora.innerHTML = `Agora são ${horaAtual()}`
+    </script>
+</body>
+</html>
